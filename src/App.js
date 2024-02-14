@@ -46,6 +46,13 @@ function App() {
     "../photos/40.jpeg",
   ];
 
+  const handleNoButtonHover = (event) => {
+    const button = event.target;
+    const randomX = getRandomNumber(-20, 20);
+    const randomY = getRandomNumber(-20, 20);
+    button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+  };
+
   return (
     <div className="App">
       <div className="grid-container">
@@ -60,8 +67,8 @@ function App() {
           memories we had in the last 5 months.
         </p>
         <div className="button-box">
-          <button>Yes</button>
-          <button>No</button>
+          <button className="button-yes">Yes</button>
+          <button className="button-no">No</button>
         </div>
       </div>
     </div>

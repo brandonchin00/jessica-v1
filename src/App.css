@@ -42,3 +42,15 @@ p {
   flex-direction: row;
   justify-content: center;
 }
+
+.button-yes {
+  padding: 2%;
+  background-color: #3cf233;
+  color: white;
+}
+
+.button-no {
+  padding: 2%;
+  background-color: #f44336;
+  color: black;
+}
