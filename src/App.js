@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 function App() {
-  // Define a list of image URLs
+  const [showDiv, setShowDiv] = useState(false);
+  const [showDiv1, setShowDiv1] = useState(false);
+  const [showDiv2, setShowDiv2] = useState(false);
+  const [showDiv3, setShowDiv3] = useState(false);
+
+  const [buttonClass, setButtonClass] = useState("button-no");
+  const [content, setContent] = useState("No");
+
   const imageUrls = [
     "../photos/1.gif",
     "../photos/2.jpeg",
@@ -46,11 +53,30 @@ function App() {
     "../photos/40.jpeg",
   ];
 
-  const handleNoButtonHover = (event) => {
-    const button = event.target;
-    const randomX = getRandomNumber(-20, 20);
-    const randomY = getRandomNumber(-20, 20);
-    button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+  const handPostEffect = () => {
+    setShowDiv(!showDiv);
+    setShowDiv1(!showDiv1);
+    setShowDiv2(!showDiv2);
+    setShowDiv3(!showDiv3);
+    alert("Enjoy the show!");
+    window.open(
+      "https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548",
+      "_blank"
+    );
+  };
+
+  const handleClassChange = () => {
+    setButtonClass("button-yes");
+    setContent("Let me think about it");
+  };
+
+  const handleMouseLeave = () => {
+    setButtonClass("button-no");
+    setContent("No");
+  };
+
+  const handleAlert = () => {
+    alert("Don't worry take your time. When you're ready, make your decision.");
   };
 
   return (
@@ -62,13 +88,23 @@ function App() {
       </div>
       <div className="block">
         <h2>Will you be my valentines?</h2>
-        <p>
-          Thank you for being patient with me. I want to do this to display the
-          memories we had in the last 5 months.
-        </p>
+        <p>Please carefully consider your choice.</p>
         <div className="button-box">
-          <button className="button-yes">Yes</button>
-          <button className="button-no">No</button>
+          <button className="button button-yes" onClick={handPostEffect}>
+            Yes
+          </button>
+          <button
+            className={buttonClass}
+            onMouseEnter={handleClassChange}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleAlert}
+          >
+            {content}
+          </button>
+          {showDiv && <div class="firework"></div>}
+          {showDiv1 && <div class="firework"></div>}
+          {showDiv2 && <div class="firework"></div>}
+          {showDiv3 && <div class="firework"></div>}
         </div>
       </div>
     </div>
